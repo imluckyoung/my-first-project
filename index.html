@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sy Kim — UX/UI Designer</title>
+  <meta name="description" content="UX/UI Designer Sy Kim의 자기소개 페이지입니다.">
+
+  <style>
+    :root {
+      --bg: #EDEEF2;
+      --surface: #FFFFFF;
+      --text: #18181C;
+      --muted: #7A7A82;
+      --accent: #E04C2C;
+      --border: #D4D5DC;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+      min-height: 100vh;
+    }
+
+    body::before {
+      content: '';
+      display: block;
+      height: 3px;
+      background: var(--accent);
+    }
+
+    .hero {
+      padding: 5rem 7rem 4.5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: end;
+      min-height: 58vh;
+    }
+
+    .hero-left {
+      position: relative;
+    }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 1.75rem;
+    }
+
+    .eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 1.5rem;
+      height: 2px;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .hero-left h1 {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: clamp(3.5rem, 8vw, 7rem);
+      font-weight: 400;
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+      color: var(--text);
+      text-wrap: balance;
+    }
+
+    .hero-left h1 .given {
+      display: block;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    .hero-right {
+      padding-bottom: 0.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .role-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 0.375rem 0.875rem;
+      border-radius: 3px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--text);
+      width: fit-content;
+    }
+
+    .role-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .bio {
+      font-size: 1.05rem;
+      line-height: 1.78;
+      color: var(--text);
+      max-width: 42ch;
+    }
+
+    .bio strong {
+      font-weight: 600;
+    }
+
+    .cta-row {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      margin-top: 0.25rem;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      padding: 0.65rem 1.5rem;
+      border-radius: 3px;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      transition: opacity 0.18s ease;
+    }
+    .btn-primary:hover, .btn-primary:focus { opacity: 0.82; outline: 2px solid var(--accent); outline-offset: 2px; }
+
+    .btn-ghost {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 2px;
+      transition: color 0.18s, border-color 0.18s;
+    }
+    .btn-ghost:hover { color: var(--text); border-color: var(--text); }
+
+    .rule {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 0 7rem;
+    }
+
+    .info-strip {
+      padding: 3.5rem 7rem;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3rem;
+    }
+
+    .info-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 600;
+      margin-bottom: 0.45rem;
+    }
+
+    .info-value {
+      font-size: 0.975rem;
+      font-weight: 500;
+      color: var(--text);
+      line-height: 1.45;
+    }
+
+    .skills-section {
+      padding: 3.5rem 7rem 4.5rem;
+    }
+
+    .skills-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 600;
+      margin-bottom: 1.25rem;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .tag {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 0.35rem 0.875rem;
+      border-radius: 2px;
+      font-size: 0.85rem;
+      color: var(--text);
+      font-weight: 400;
+      transition: border-color 0.15s;
+    }
+    .tag:hover { border-color: var(--muted); }
+
+    .footer {
+      border-top: 1px solid var(--border);
+      margin: 0 7rem;
+      padding: 1.75rem 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-email {
+      font-size: 0.875rem;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.18s;
+    }
+    .footer-email:hover { color: var(--accent); }
+
+    .footer-copy {
+      font-size: 0.78rem;
+      color: var(--muted);
+      letter-spacing: 0.02em;
+    }
+
+    @media (max-width: 860px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 3.5rem 2.5rem 3rem;
+        gap: 2.5rem;
+        min-height: auto;
+        align-items: start;
+      }
+      .rule, .footer { margin: 0 2.5rem; }
+      .info-strip { padding: 3rem 2.5rem; grid-template-columns: 1fr 1fr; gap: 2rem; }
+      .skills-section { padding: 3rem 2.5rem 3.5rem; }
+    }
+
+    @media (max-width: 540px) {
+      .hero { padding: 2.5rem 1.5rem 2.5rem; }
+      .rule, .footer { margin: 0 1.5rem; }
+      .info-strip { padding: 2.5rem 1.5rem; grid-template-columns: 1fr; gap: 1.75rem; }
+      .skills-section { padding: 2.5rem 1.5rem 3rem; }
+      .hero-left h1 { font-size: clamp(3rem, 15vw, 5rem); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <div class="hero-left">
+        <p class="eyebrow">소개</p>
+        <h1>
+          <span class="given">Sy</span>
+          Kim
+        </h1>
+      </div>
+
+      <div class="hero-right">
+        <span class="role-tag">
+          <span class="role-dot"></span>
+          UX/UI Designer
+        </span>
+
+        <p class="bio">
+          <strong>사람 중심의 디자인으로 더 나은 경험을 만듭니다.</strong><br>
+          리서치부터 인터랙션 설계, 프로토타이핑까지,
+          사용자가 무엇을 필요로 하는지 이해하고 직관적인 인터페이스로
+          풀어내는 일을 합니다.
+        </p>
+
+        <div class="cta-row">
+          <a href="mailto:sykim@daton.ai" class="btn-primary">연락하기</a>
+          <a href="https://daton.ai" class="btn-ghost" target="_blank" rel="noopener">Daton AI →</a>
+        </div>
+      </div>
+    </section>
+
+    <hr class="rule">
+
+    <div class="info-strip">
+      <div>
+        <p class="info-label">소속</p>
+        <p class="info-value">Daton AI</p>
+      </div>
+      <div>
+        <p class="info-label">위치</p>
+        <p class="info-value">Seoul, Korea</p>
+      </div>
+      <div>
+        <p class="info-label">이메일</p>
+        <p class="info-value">sykim@daton.ai</p>
+      </div>
+    </div>
+
+    <hr class="rule">
+
+    <section class="skills-section">
+      <p class="skills-label">전문 분야</p>
+      <div class="tags">
+        <span class="tag">Figma</span>
+        <span class="tag">User Research</span>
+        <span class="tag">Interaction Design</span>
+        <span class="tag">Prototyping</span>
+        <span class="tag">Usability Testing</span>
+        <span class="tag">Design Systems</span>
+        <span class="tag">Information Architecture</span>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <a href="mailto:sykim@daton.ai" class="footer-email">sykim@daton.ai</a>
+      <p class="footer-copy">© 2026 Sy Kim</p>
+    </footer>
+  </main>
+</body>
+</html>
